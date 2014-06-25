@@ -4,19 +4,19 @@
 " Last Updated: December 26, 2009
 
 if exists('b:cocoa_proj') || &cp || version < 700
-	finish
+  finish
 endif
 let b:cocoa_proj = fnameescape(globpath(expand('<afile>:p:h'), '*.xcodeproj'))
 " Search a few levels up to see if we can find the project file
 if empty(b:cocoa_proj)
-	let b:cocoa_proj  = fnameescape(globpath(expand('<afile>:p:h:h'), '*.xcodeproj'))
+  let b:cocoa_proj  = fnameescape(globpath(expand('<afile>:p:h:h'), '*.xcodeproj'))
 
-	if empty(b:cocoa_proj)
-		let b:cocoa_proj = fnameescape(globpath(expand('<afile>:p:h:h:h'), '*.xcodeproj'))
-		if empty(b:cocoa_proj)
-			let b:cocoa_proj = fnameescape(globpath(expand('<afile>:p:h:h:h:h'), '*.xcodeproj'))
-		endif
-	endif
+  if empty(b:cocoa_proj)
+    let b:cocoa_proj = fnameescape(globpath(expand('<afile>:p:h:h:h'), '*.xcodeproj'))
+    if empty(b:cocoa_proj)
+      let b:cocoa_proj = fnameescape(globpath(expand('<afile>:p:h:h:h:h'), '*.xcodeproj'))
+    endif
+  endif
 endif
 let g:x = b:cocoa_proj
 
@@ -49,37 +49,37 @@ if exists('*s:AlternateFile') | finish | endif
 
 " Switch from header file to implementation file (and vice versa).
 fun s:AlternateFile()
-	let path = expand('%:p:r').'.'
-	let extensions = expand('%:e') == 'h' ? ['m', 'c', 'cpp'] : ['h']
-	if !s:ReadableExtensionIn(path, extensions)
-		  echoh ErrorMsg | echo 'Alternate file not readable.' | echoh None
-	endif
+  let path = expand('%:p:r').'.'
+  let extensions = expand('%:e') == 'h' ? ['m', 'c', 'cpp'] : ['h']
+  if !s:ReadableExtensionIn(path, extensions)
+      echoh ErrorMsg | echo 'Alternate file not readable.' | echoh None
+  endif
 endf
 
 " Returns true and switches to file if file with extension in any of
 " |extensions| is readable, or returns false if not.
 fun s:ReadableExtensionIn(path, extensions)
-	for ext in a:extensions
-		if filereadable(a:path.ext)
-			exe 'e'.fnameescape(a:path.ext)
-			return 1
-		endif
-	endfor
-	return 0
+  for ext in a:extensions
+    if filereadable(a:path.ext)
+      exe 'e'.fnameescape(a:path.ext)
+      return 1
+    endif
+  endfor
+  return 0
 endf
 
 " Opens Xcode and runs Applescript command.
 fun s:XcodeRun(command)
-	call system("open -a Xcode ".b:cocoa_proj." && osascript -e 'tell app "
-				\ .'"Xcode" to '.a:command."' &")
+  call system("open -a Xcode ".b:cocoa_proj." && osascript -e 'tell app "
+        \ .'"Xcode" to '.a:command."' &")
 endf
 
 fun s:BuildAnd(command)
-	call system("open -a Xcode ".b:cocoa_proj." && osascript -e 'tell app "
-				\ ."\"Xcode\"' -e '"
-				\ .'set target_ to project of active project document '
-				\ ."' -e '"
-				\ .'if (build target_) starts with "Build succeeded" then '
-				\ .a:command.' target_'
-				\ ."' -e 'end tell'")
+  call system("open -a Xcode ".b:cocoa_proj." && osascript -e 'tell app "
+        \ ."\"Xcode\"' -e '"
+        \ .'set target_ to project of active project document '
+        \ ."' -e '"
+        \ .'if (build target_) starts with "Build succeeded" then '
+        \ .a:command.' target_'
+        \ ."' -e 'end tell'")
 endf

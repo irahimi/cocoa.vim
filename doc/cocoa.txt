@@ -46,24 +46,24 @@ you look up. To fix this, see this page: http://tinyurl.com/remove-annoying-aler
 ==============================================================================
 FEATURE OVERVIEW                                              *cocoa-features*
 
-	1. Enhanced syntax highlighting; Vim's syntax highlighting for
-	   Objective-C seemed a bit incomplete to me, so I have added a few
-	   niceties, such as highlighting Cocoa keywords and differentiating
-	   the method name and passed objects in method calls and definitions.
-	2. Xcode-like mappings; mappings such as <d-r> (where "d" is "command")
-	   to build & run and <d-0> to switch to the project window help to
-	   integrate Xcode and Vim. For a complete list of the mappings in
-	   cocoa.vim, see |cocoa-mappings|.
-	3. Methods for the current file can be listed and navigated to with
-	   the |:ListMethods| command.
-	4. A template of methods declared in a header file (.h) can be built
-	   in an implementation file (.m) with |:BuildMethods|.
-	5. Cocoa/C Documentation can be looked up with the |:CocoaDoc| command,
-	   or simply with Vim's |K|.
-	6. Code completion for classes, methods, functions, constants, types,
-	   and notifications can be invoked with <c-x><c-o>. Parameters for
-	   methods and functions are automatically converted to snippets to
-	   <tab> over if you have snipMate installed.
+  1. Enhanced syntax highlighting; Vim's syntax highlighting for
+     Objective-C seemed a bit incomplete to me, so I have added a few
+     niceties, such as highlighting Cocoa keywords and differentiating
+     the method name and passed objects in method calls and definitions.
+  2. Xcode-like mappings; mappings such as <d-r> (where "d" is "command")
+     to build & run and <d-0> to switch to the project window help to
+     integrate Xcode and Vim. For a complete list of the mappings in
+     cocoa.vim, see |cocoa-mappings|.
+  3. Methods for the current file can be listed and navigated to with
+     the |:ListMethods| command.
+  4. A template of methods declared in a header file (.h) can be built
+     in an implementation file (.m) with |:BuildMethods|.
+  5. Cocoa/C Documentation can be looked up with the |:CocoaDoc| command,
+     or simply with Vim's |K|.
+  6. Code completion for classes, methods, functions, constants, types,
+     and notifications can be invoked with <c-x><c-o>. Parameters for
+     methods and functions are automatically converted to snippets to
+     <tab> over if you have snipMate installed.
 
 ==============================================================================
 MAPPINGS                                     *cocoa-mappings* *g:objc_man_key*
@@ -73,34 +73,34 @@ integrate with Xcode:
 (Disclaimer: Sorry, I could not use the swirly symbols because vim/git was
 having encoding issues. Just pretend that e.g. <d-r> means cmd-r.)
 
-	|<Leader>|A - Alternate between header (.h) and implementation (.m) file
-	K - Look up documentation for word under cursor[1]
-	<d-m-up> - <Leader>A
-	<d-r> - Build & Run (Go)
-	<d-cr> - CMD-R
-	<d-b> - Build
-	<shift-k> - Clean
-	<d-0> - Go to Project
-	<d-2> - :ListMethods
-	<F5> (in insert mode) - Show omnicompletion menu
-	<d-/> - Comment out line
-	<d-[> - Decrease indent
-	<d-]> - Increase indent
+  |<Leader>|A - Alternate between header (.h) and implementation (.m) file
+  K - Look up documentation for word under cursor[1]
+  <d-m-up> - <Leader>A
+  <d-r> - Build & Run (Go)
+  <d-cr> - CMD-R
+  <d-b> - Build
+  <shift-k> - Clean
+  <d-0> - Go to Project
+  <d-2> - :ListMethods
+  <F5> (in insert mode) - Show omnicompletion menu
+  <d-/> - Comment out line
+  <d-[> - Decrease indent
+  <d-]> - Increase indent
 
-	([1] This can be customized by the variable g:objc_man_key.)
+  ([1] This can be customized by the variable g:objc_man_key.)
 
 ==============================================================================
 COMMANDS                                                      *cocoa-commands*
 
                                                                 *:ListMethods*
-:ListMethods		Open a split window containing the methods, functions,
-			and #pragma marks of the current file.
+:ListMethods    Open a split window containing the methods, functions,
+      and #pragma marks of the current file.
                                                                *:BuildMethods*
 :BuildMethods [headerfile]
-			Build a template of methods in an implementation (.m)
-			from a list declared in a header file (.h). If no
-			argument is given, the corresponding header file is
-			used (e.g. "foo.m" -> "foo.h").
+      Build a template of methods in an implementation (.m)
+      from a list declared in a header file (.h). If no
+      argument is given, the corresponding header file is
+      used (e.g. "foo.m" -> "foo.h").
 
 ==============================================================================
 CODE COMPLETION                                             *cocoa-completion*
@@ -146,7 +146,7 @@ CONTACT                                         *cocoa-contact* *cocoa-author*
 
 To contact the author (Michael Sanders), you may email:
 
-	msanders42+cocoa.vim <at> gmail <dot> com
+  msanders42+cocoa.vim <at> gmail <dot> com
 
 Thanks for your interest in the script!
 
